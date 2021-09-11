@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '/models/user_manager.dart';
 import '/common/custom_drawer/custom_drawer_header.dart';
 import '/common/custom_drawer/drawer_tile.dart';
-import '/models/user_manager.dart';
 import 'package:provider/provider.dart';
 import 'custom_drawer_header.dart';
 import 'drawer_tile.dart';
