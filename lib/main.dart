@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'screens/base/base_screen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -10,11 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Loja do Will',
+      title: 'Loja do Willians',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Container(),
+      home: BaseScreen(),
     );
   }
 }
