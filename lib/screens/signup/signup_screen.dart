@@ -94,6 +94,7 @@ class SignUpScreen extends StatelessWidget {
                         formKey.currentState.save();
                       }
                       if (user.password != user.confirmPassword) {
+                        // ignore: deprecated_member_use
                         scaffoldKey.currentState.showSnackBar(
                           SnackBar(
                             content: const Text('Senhas não coincidem!'),
@@ -107,7 +108,9 @@ class SignUpScreen extends StatelessWidget {
                     },
                     child: const Text(
                       'Criar Conta',
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
                     ),
                   ),
                 )
