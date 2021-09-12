@@ -105,8 +105,6 @@ class SignUpScreen extends StatelessWidget {
                         );
                         return;
                       }
-
-                      //TODO: userManager
                       context.read<UserManager>().signUp(
                             user: user,
                             onSuccess: () {
@@ -114,6 +112,7 @@ class SignUpScreen extends StatelessWidget {
                               //TODO: POP
                             },
                             onFail: (e) {
+                              // ignore: deprecated_member_use
                               scaffoldKey.currentState.showSnackBar(
                                 SnackBar(
                                   content: Text('Falha ao cadastrar: $e'),
