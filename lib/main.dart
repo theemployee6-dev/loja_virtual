@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(
                 builder: (_) => SignUpScreen(),
               );
-
             case '/base':
             default:
               return MaterialPageRoute(
