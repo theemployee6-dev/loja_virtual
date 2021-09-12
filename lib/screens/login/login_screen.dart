@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/helpers/validators.dart';
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -26,6 +27,7 @@ class LoginScreen extends StatelessWidget {
                   keyboardType: TextInputType.emailAddress,
                   autocorrect: false,
                   validator: (email) {
+                    if (!emailValid(email)) return 'E-mail inválido';
                     return null;
                   },
                 ),
