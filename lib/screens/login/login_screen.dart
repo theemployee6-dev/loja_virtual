@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,47 +23,42 @@ class LoginScreen extends StatelessWidget {
                 decoration: const InputDecoration(hintText: 'E-mail'),
                 keyboardType: TextInputType.emailAddress,
                 autocorrect: false,
-                validator: (email){
+                validator: (email) {
                   return null;
                 },
               ),
-              const SizedBox(height: 16,),
+              const SizedBox(
+                height: 16,
+              ),
               TextFormField(
                 decoration: const InputDecoration(hintText: 'Senha'),
                 autocorrect: false,
                 obscureText: true,
-                validator: (pass){
-                  if(pass.isEmpty || pass.length < 6)
-                    return 'Senha inválida';
+                validator: (pass) {
+                  if (pass.isEmpty || pass.length < 6) return 'Senha inválida';
                   return null;
                 },
               ),
               Align(
                 alignment: Alignment.centerRight,
                 child: FlatButton(
-                  onPressed: (){
-
-                  },
+                  onPressed: () {},
                   padding: EdgeInsets.zero,
-                  child: const Text(
-                    'Esqueci minha senha'
-                  ),
+                  child: const Text('Esqueci minha senha'),
                 ),
               ),
-              const SizedBox(height: 16,),
+              const SizedBox(
+                height: 16,
+              ),
               SizedBox(
                 height: 44,
                 child: RaisedButton(
-                  onPressed: (){
-
-                  },
+                  onPressed: () {},
                   color: Theme.of(context).primaryColor,
                   textColor: Colors.white,
                   child: const Text(
                     'Entrar',
-                    style: TextStyle(
-                      fontSize: 18
-                    ),
+                    style: TextStyle(fontSize: 18),
                   ),
                 ),
               )
