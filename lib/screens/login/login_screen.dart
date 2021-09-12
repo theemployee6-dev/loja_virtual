@@ -58,6 +58,7 @@ class LoginScreen extends StatelessWidget {
                     child,
                     SizedBox(
                       height: 44,
+                      // ignore: deprecated_member_use
                       child: RaisedButton(
                         onPressed: () {
                           if (formKey.currentState.validate()) {
@@ -68,6 +69,7 @@ class LoginScreen extends StatelessWidget {
                                     password: passController.text,
                                   ),
                                   onFail: (e) {
+                                    // ignore: deprecated_member_use
                                     scaffoldKey.currentState.showSnackBar(
                                       SnackBar(
                                         content: Text('Falha ao entrar: $e'),
@@ -97,6 +99,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     Align(
                       alignment: Alignment.centerRight,
+                      // ignore: deprecated_member_use
                       child: FlatButton(
                         onPressed: () {},
                         padding: EdgeInsets.zero,
