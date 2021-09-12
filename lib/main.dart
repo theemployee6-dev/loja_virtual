@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return Provider(
       create: (_) => UserManager(),
       child: MaterialApp(
-        title: 'Loja do Daniel',
+        title: 'Loja do Willians',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primaryColor: const Color.fromARGB(255, 4, 125, 141),
