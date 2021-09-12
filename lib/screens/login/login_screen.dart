@@ -25,13 +25,14 @@ class LoginScreen extends StatelessWidget {
           child: Form(
             key: formKey,
             child: Consumer<UserManager>(
-              builder: (_, userManager, __) {
+              builder: (_, userManager, child) {
                 return ListView(
                   padding: const EdgeInsets.all(16),
                   shrinkWrap: true,
                   children: <Widget>[
                     TextFormField(
                       controller: emailController,
+                      enabled: !userManager.loading,
                       decoration: const InputDecoration(hintText: 'E-mail'),
                       keyboardType: TextInputType.emailAddress,
                       autocorrect: false,
@@ -45,6 +46,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     TextFormField(
                       controller: passController,
+                      enabled: !userManager.loading,
                       decoration: const InputDecoration(hintText: 'Senha'),
                       autocorrect: false,
                       obscureText: true,
@@ -54,15 +56,7 @@ class LoginScreen extends StatelessWidget {
                         return null;
                       },
                     ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      // ignore: deprecated_member_use
-                      child: FlatButton(
-                        onPressed: () {},
-                        padding: EdgeInsets.zero,
-                        child: const Text('Esqueci minha senha'),
-                      ),
-                    ),
+                    child,
                     const SizedBox(
                       height: 16,
                     ),
@@ -70,40 +64,58 @@ class LoginScreen extends StatelessWidget {
                       height: 44,
                       // ignore: deprecated_member_use
                       child: RaisedButton(
-                        onPressed: () {
-                          if (formKey.currentState.validate()) {
-                            print(emailController.text);
-                            context.read<UserManager>().signIn(
-                                  user: User(
-                                    email: emailController.text,
-                                    password: passController.text,
-                                  ),
-                                  onFail: (e) {
-                                    // ignore: deprecated_member_use
-                                    scaffoldKey.currentState.showSnackBar(
-                                      SnackBar(
-                                        content: Text('Falha ao entrar: $e'),
-                                        backgroundColor: Colors.red,
-                                      ),
-                                    );
-                                  },
-                                  onSuccess: () {
-                                    //TODO: fechar tela de login
-                                  },
-                                );
-                          }
-                        },
+                        onPressed: userManager.loading
+                            ? null
+                            : () {
+                                if (formKey.currentState.validate()) {
+                                  print(emailController.text);
+                                  userManager.signIn(
+                                    user: User(
+                                      email: emailController.text,
+                                      password: passController.text,
+                                    ),
+                                    onFail: (e) {
+                                      // ignore: deprecated_member_use
+                                      scaffoldKey.currentState.showSnackBar(
+                                        SnackBar(
+                                          content: Text('Falha ao entrar: $e'),
+                                          backgroundColor: Colors.red,
+                                        ),
+                                      );
+                                    },
+                                    onSuccess: () {
+                                      //TODO: fechar tela de login
+                                    },
+                                  );
+                                }
+                              },
                         color: Theme.of(context).primaryColor,
+                        disabledColor:
+                            Theme.of(context).primaryColor.withAlpha(100),
                         textColor: Colors.white,
-                        child: const Text(
-                          'Entrar',
-                          style: TextStyle(fontSize: 18),
-                        ),
+                        child: userManager.loading
+                            ? CircularProgressIndicator(
+                                valueColor:
+                                    AlwaysStoppedAnimation(Colors.white),
+                              )
+                            : const Text(
+                                'Entrar',
+                                style: TextStyle(fontSize: 18),
+                              ),
                       ),
-                    )
+                    ),
                   ],
                 );
               },
+              child: Align(
+                alignment: Alignment.centerRight,
+                // ignore: deprecated_member_use
+                child: FlatButton(
+                  onPressed: () {},
+                  padding: EdgeInsets.zero,
+                  child: const Text('Esqueci minha senha'),
+                ),
+              ),
             ),
           ),
         ),
