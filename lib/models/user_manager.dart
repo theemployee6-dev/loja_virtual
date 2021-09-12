@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import '/models/user.dart';
 
 class UserManager {
-
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   Future<void> signIn(User user) async {
@@ -12,9 +11,8 @@ class UserManager {
           email: user.email, password: user.password);
 
       print(result.user.uid);
-    } on PlatformException catch (e){
+    } on PlatformException catch (e) {
       print(e);
     }
   }
-
-} 
+}
