@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/screens/signup/siginup_screen.dart';
+import 'screens/signup/signup_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'models/user_manager.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           switch (setting.name) {
             case '/signup':
               return MaterialPageRoute(
-                builder: (_) => SignupScreen(),
+                builder: (_) => SignUpScreen(),
               );
 
             case '/base':

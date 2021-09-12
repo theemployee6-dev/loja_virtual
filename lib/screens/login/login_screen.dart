@@ -22,11 +22,11 @@ class LoginScreen extends StatelessWidget {
           // ignore: deprecated_member_use
           FlatButton(
             onPressed: () {
-              Navigator.of(context).pushNamed('\signup_screen');
+              Navigator.of(context).pushReplacementNamed('/signup');
             },
             child: const Text(
-              'Criar Conta',
-              style: TextStyle(color: Colors.white, fontSize: 20),
+              'CRIAR CONTA',
+              style: TextStyle(color: Colors.white, fontSize: 14),
             ),
           ),
         ],
