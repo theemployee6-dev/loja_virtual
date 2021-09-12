@@ -23,6 +23,7 @@ class LoginScreen extends StatelessWidget {
               shrinkWrap: true,
               children: <Widget>[
                 TextFormField(
+                  controller: emailController,
                   decoration: const InputDecoration(hintText: 'E-mail'),
                   keyboardType: TextInputType.emailAddress,
                   autocorrect: false,
@@ -35,6 +36,7 @@ class LoginScreen extends StatelessWidget {
                   height: 16,
                 ),
                 TextFormField(
+                  controller: passController,
                   decoration: const InputDecoration(hintText: 'Senha'),
                   autocorrect: false,
                   obscureText: true,
@@ -58,7 +60,11 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   height: 44,
                   child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (formKey.currentState.validate()) {
+                        print(emailController.text);
+                      }
+                    },
                     color: Theme.of(context).primaryColor,
                     textColor: Colors.white,
                     child: const Text(
