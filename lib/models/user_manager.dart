@@ -40,6 +40,7 @@ class UserManager extends ChangeNotifier {
           email: user.email, password: user.password);
 
       user.id = result.user.uid;
+      this.user = user;
 
       await user.saveData();
 
@@ -61,7 +62,7 @@ class UserManager extends ChangeNotifier {
       final DocumentSnapshot docUser =
           await firestore.collection('users').document(currentUser.uid).get();
       user = User.fromDocument(docUser);
-
+      print(user.name);
       notifyListeners();
     }
   }
