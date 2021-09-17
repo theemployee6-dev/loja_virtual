@@ -96,7 +96,7 @@ class LoginScreen extends StatelessWidget {
                                       );
                                     },
                                     onSuccess: () {
-                                      //TODO: fechar tela de login
+                                       Navigator.of(context).pop();
                                     },
                                   );
                                 }

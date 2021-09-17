@@ -9,6 +9,7 @@ class CustomDrawer extends StatelessWidget {
       child: ListView(
         children: <Widget>[
           CustomDrawerHeader(),
+          Divider(thickness: 2),
           DrawerTile(
             iconData: Icons.home,
             title: 'Início',
