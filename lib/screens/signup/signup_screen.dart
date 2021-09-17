@@ -109,7 +109,7 @@ class SignUpScreen extends StatelessWidget {
                             user: user,
                             onSuccess: () {
                               debugPrint('Sucesso');
-                              //TODO: POP
+                              Navigator.of(context).pop();
                             },
                             onFail: (e) {
                               // ignore: deprecated_member_use
