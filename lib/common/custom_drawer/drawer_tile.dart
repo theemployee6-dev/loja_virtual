@@ -15,7 +15,7 @@ class DrawerTile extends StatelessWidget {
     final Color primaryColor = Theme.of(context).primaryColor;
     return InkWell(
       onTap: () {
-        context.read<PageManager>().setPage(page);
+       context.read<PageManager>().setPage(page);
       },
       child: SizedBox(
         height: 60,

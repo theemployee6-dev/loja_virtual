@@ -22,10 +22,21 @@ class BaseScreen extends StatelessWidget {
           Scaffold(
             drawer: CustomDrawer(),
             appBar: AppBar(
-              title: const Text('Produtos'),
+              title: const Text('Produto'),
             ),
           ),
-         
+          Scaffold(
+            drawer: CustomDrawer(),
+            appBar: AppBar(
+              title: const Text('Meus Pedidos'),
+            ),
+          ),
+          Scaffold(
+            drawer: CustomDrawer(),
+            appBar: AppBar(
+              title: const Text('Lojas'),
+            ),
+          ),         
         ],
       ),
     );
