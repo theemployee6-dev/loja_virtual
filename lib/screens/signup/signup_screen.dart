@@ -39,7 +39,7 @@ class SignUpScreen extends StatelessWidget {
                   onSaved: (name) => user.name = name,
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 16
                 ),
                 TextFormField(
                   decoration: const InputDecoration(hintText: 'E-mail'),
@@ -53,7 +53,7 @@ class SignUpScreen extends StatelessWidget {
                   onSaved: (email) => user.email = email,
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 16
                 ),
                 TextFormField(
                   decoration: const InputDecoration(hintText: 'Senha'),
@@ -67,7 +67,7 @@ class SignUpScreen extends StatelessWidget {
                   onSaved: (pass) => user.password = pass,
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 16
                 ),
                 TextFormField(
                   decoration: const InputDecoration(hintText: 'Repita a Senha'),
@@ -81,7 +81,7 @@ class SignUpScreen extends StatelessWidget {
                   onSaved: (pass) => user.confirmPassword = pass,
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 16
                 ),
                 SizedBox(
                   height: 44,
@@ -94,7 +94,7 @@ class SignUpScreen extends StatelessWidget {
                     onPressed: () {
                       if (formKey.currentState.validate()) {
                         formKey.currentState.save();
-                      }
+                      
                       if (user.password != user.confirmPassword) {
                         // ignore: deprecated_member_use
                         scaffoldKey.currentState.showSnackBar(
@@ -121,6 +121,7 @@ class SignUpScreen extends StatelessWidget {
                               );
                             },
                           );
+                      }
                     },
                     child: const Text(
                       'Criar Conta',
