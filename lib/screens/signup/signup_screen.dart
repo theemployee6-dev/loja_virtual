@@ -92,43 +92,52 @@ class SignUpScreen extends StatelessWidget {
                         disabledColor:
                             Theme.of(context).primaryColor.withAlpha(100),
                         textColor: Colors.white,
-                        onPressed: () {
-                          if (formKey.currentState.validate()) {
-                            formKey.currentState.save();
+                        onPressed: userManager.loading
+                            ? null
+                            : () {
+                                if (formKey.currentState.validate()) {
+                                  formKey.currentState.save();
 
-                            if (user.password != user.confirmPassword) {
-                              // ignore: deprecated_member_use
-                              scaffoldKey.currentState.showSnackBar(
-                                SnackBar(
-                                  content: const Text('Senhas não coincidem!'),
-                                  backgroundColor: Colors.red,
+                                  if (user.password != user.confirmPassword) {
+                                    // ignore: deprecated_member_use
+                                    scaffoldKey.currentState.showSnackBar(
+                                      SnackBar(
+                                        content:
+                                            const Text('Senhas não coincidem!'),
+                                        backgroundColor: Colors.red,
+                                      ),
+                                    );
+                                    return;
+                                  }
+                                  userManager.signUp(
+                                    user: user,
+                                    onSuccess: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    onFail: (e) {
+                                      // ignore: deprecated_member_use
+                                      scaffoldKey.currentState.showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              Text('Falha ao cadastrar: $e'),
+                                          backgroundColor: Colors.red,
+                                        ),
+                                      );
+                                    },
+                                  );
+                                }
+                              },
+                        child: userManager.loading
+                            ? CircularProgressIndicator(
+                                valueColor:
+                                    AlwaysStoppedAnimation(Colors.white),
+                              )
+                            : const Text(
+                                'Criar Conta',
+                                style: TextStyle(
+                                  fontSize: 18,
                                 ),
-                              );
-                              return;
-                            }
-                            userManager.signUp(
-                              user: user,
-                              onSuccess: () {
-                                Navigator.of(context).pop();
-                              },
-                              onFail: (e) {
-                                // ignore: deprecated_member_use
-                                scaffoldKey.currentState.showSnackBar(
-                                  SnackBar(
-                                    content: Text('Falha ao cadastrar: $e'),
-                                    backgroundColor: Colors.red,
-                                  ),
-                                );
-                              },
-                            );
-                          }
-                        },
-                        child: const Text(
-                          'Criar Conta',
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
+                              ),
                       ),
                     )
                   ],
