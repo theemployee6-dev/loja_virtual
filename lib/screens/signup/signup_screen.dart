@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import '/helpers/validators.dart';
 import '/models/user.dart';
 import '/models/user_manager.dart';
-import 'package:provider/provider.dart';
+
 
 class SignUpScreen extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
