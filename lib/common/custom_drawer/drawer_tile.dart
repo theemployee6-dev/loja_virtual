@@ -35,7 +35,7 @@ class DrawerTile extends StatelessWidget {
                 fontSize: 16,
                 color: curPage == page ? primaryColor : Colors.grey[700],
               ),
-            )
+            ),
           ],
         ),
       ),

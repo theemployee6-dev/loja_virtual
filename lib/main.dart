@@ -21,7 +21,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: const Color.fromARGB(255, 4, 125, 141),
           scaffoldBackgroundColor: const Color.fromARGB(255, 4, 125, 141),
-          appBarTheme: const AppBarTheme(elevation: 0),
+          appBarTheme: const AppBarTheme(
+            elevation: 0,
+            color: const Color.fromARGB(255, 4, 125, 141),
+          ),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         initialRoute: '/base',
