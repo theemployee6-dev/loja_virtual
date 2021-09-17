@@ -122,7 +122,9 @@ class LoginScreen extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 // ignore: deprecated_member_use
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    //TODO: ESQUECI MINHA SENHA
+                  },
                   padding: EdgeInsets.zero,
                   child: const Text('Esqueci minha senha'),
                 ),
