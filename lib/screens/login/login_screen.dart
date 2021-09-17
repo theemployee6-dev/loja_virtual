@@ -80,7 +80,6 @@ class LoginScreen extends StatelessWidget {
                             ? null
                             : () {
                                 if (formKey.currentState.validate()) {
-                                  print(emailController.text);
                                   userManager.signIn(
                                     user: User(
                                       email: emailController.text,
@@ -96,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                                       );
                                     },
                                     onSuccess: () {
-                                       Navigator.of(context).pop();
+                                      Navigator.of(context).pop();
                                     },
                                   );
                                 }
