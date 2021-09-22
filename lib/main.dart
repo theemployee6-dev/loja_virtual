@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'models/product_manager.dart';
 import 'screens/login/login_screen.dart';
 import 'screens/signup/signup_screen.dart';
 import 'package:provider/provider.dart';
@@ -11,12 +12,19 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => UserManager(),
-      lazy: false,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => UserManager(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProductManager(),
+          lazy: false,
+        ),
+      ],
       child: MaterialApp(
         title: 'Loja do Willians',
         debugShowCheckedModeBanner: false,
