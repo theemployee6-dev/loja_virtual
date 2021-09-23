@@ -4,6 +4,8 @@ import 'package:loja_virtual/models/product_manager.dart';
 import 'package:loja_virtual/screens/products/components/product_list_tile.dart';
 import 'package:provider/provider.dart';
 
+import 'components/search_dialog.dart';
+
 class ProductsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,6 +14,14 @@ class ProductsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Produtos'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              showDialog(context: context, builder: (_) => SearchDialog());
+            },
+            icon: Icon(Icons.search),
+          ),
+        ],
       ),
       body: Consumer<ProductManager>(builder: (_, productManager, __) {
         return ListView.builder(
