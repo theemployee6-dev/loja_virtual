@@ -31,6 +31,7 @@ class SignUpScreen extends StatelessWidget {
                   shrinkWrap: true,
                   children: <Widget>[
                     TextFormField(
+                      textCapitalization: TextCapitalization.sentences,
                       decoration:
                           const InputDecoration(hintText: 'Nome Completo'),
                       enabled: !userManager.loading,
