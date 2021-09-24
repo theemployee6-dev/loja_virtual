@@ -1,6 +1,9 @@
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/models/product.dart';
+
+import 'components/size_widget.dart';
 
 class ProductScreen extends StatelessWidget {
   final Product product;
@@ -30,7 +33,7 @@ class ProductScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start, 
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   product.name,
@@ -61,6 +64,18 @@ class ProductScreen extends StatelessWidget {
                 Text(
                   product.description,
                   style: const TextStyle(fontSize: 16),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16, bottom: 8),
+                  child: Text(
+                    'Tamanhos',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  ),
+                ),
+                Wrap(
+                  children: product.sizes.map((s) {
+                    return SizeWidget(size: s);
+                  }).toList(),
                 ),
               ],
             ),
