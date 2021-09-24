@@ -73,6 +73,8 @@ class ProductScreen extends StatelessWidget {
                   ),
                 ),
                 Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
                   children: product.sizes.map((s) {
                     return SizeWidget(size: s);
                   }).toList(),
