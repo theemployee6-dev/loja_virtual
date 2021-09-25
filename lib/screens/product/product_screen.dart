@@ -2,6 +2,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/models/product.dart';
+import 'package:loja_virtual/models/user_manager.dart';
 import 'package:provider/provider.dart';
 
 import 'components/size_widget.dart';
@@ -36,7 +37,7 @@ class ProductScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
                     product.name,
@@ -80,10 +81,41 @@ class ProductScreen extends StatelessWidget {
                   Wrap(
                     spacing: 8,
                     runSpacing: 8,
-                    children: product.sizes.map((s) {
-                      return SizeWidget(size: s);
-                    }).toList(),
+                    children: product.sizes.map(
+                      (s) {
+                        return SizeWidget(size: s);
+                      },
+                    ).toList(),
                   ),
+                  const SizedBox(height: 20),
+                  if (product.hasStock)
+                    Consumer2<UserManager, Product>(
+                      builder: (_, userManager, product, __) {
+                        return SizedBox(
+                          height: 44,
+                          // ignore: deprecated_member_use
+                          child: RaisedButton(
+                            onPressed: product.selectedSize != null
+                                ? () {
+                                    if (userManager.isLoggedIn) {
+                                      //TODO: ADICIONAR AO CARRINHO
+                                    } else {
+                                      Navigator.of(context).pushNamed('/login');
+                                    }
+                                  }
+                                : null,
+                            color: Theme.of(context).primaryColor,
+                            textColor: Colors.white,
+                            child: Text(
+                              userManager.isLoggedIn
+                                  ? 'Adicionar ao Carrinho'
+                                  : 'Entre para comprar',
+                              style: const TextStyle(fontSize: 18),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                 ],
               ),
             ),
