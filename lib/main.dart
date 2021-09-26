@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/models/cart_manager.dart';
 import 'models/product.dart';
 import 'models/product_manager.dart';
+import 'screens/cart/cart_screen.dart';
 import 'screens/login/login_screen.dart';
 import 'screens/product/product_screen.dart';
 import 'screens/signup/signup_screen.dart';
@@ -26,6 +28,10 @@ class MyApp extends StatelessWidget {
           create: (_) => ProductManager(),
           lazy: false,
         ),
+        Provider(
+          create: (_) => CartManager(),
+          lazy: false,
+        ),
       ],
       child: MaterialApp(
         title: 'Loja do Willians',
@@ -49,6 +55,10 @@ class MyApp extends StatelessWidget {
             case '/signup':
               return MaterialPageRoute(
                 builder: (_) => SignUpScreen(),
+              );
+            case '/cart':
+              return MaterialPageRoute(
+                builder: (_) => CartScreen(),
               );
             case '/product':
               return MaterialPageRoute(
