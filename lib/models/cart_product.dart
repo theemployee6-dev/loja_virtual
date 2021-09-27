@@ -47,4 +47,8 @@ class CartProduct {
       'size': size,
     };
   }
+
+  bool stackable(Product product) {
+    return product.id == productId && product.selectedSize.name == size;
+  }
 }
