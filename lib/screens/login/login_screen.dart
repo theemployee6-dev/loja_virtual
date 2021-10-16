@@ -136,6 +136,7 @@ class LoginScreen extends StatelessWidget {
                           ));
                         } else {
                           userManager.recoverPass(emailController.text);
+                          // ignore: deprecated_member_use
                           scaffoldKey.currentState.showSnackBar(SnackBar(
                             content: const Text('Confira seu e-mail.'),
                             backgroundColor: Theme.of(context).primaryColor,
