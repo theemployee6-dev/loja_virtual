@@ -53,7 +53,12 @@ class UserManager extends ChangeNotifier {
     loading = false;
   }
 
-   void signOut(){
+  void recoverPass(String email) {
+    auth.sendPasswordResetEmail(email: email);
+    notifyListeners();
+  }
+
+  void signOut() {
     auth.signOut();
     user = null;
     notifyListeners();
