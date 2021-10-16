@@ -11,7 +11,7 @@ class CartManager extends ChangeNotifier {
 
   User user;
 
-  num productPrice = 0.0;
+  num productsPrice = 0.0;
 
   void updateUser(UserManager userManager) {
     user = userManager.user;
@@ -54,7 +54,7 @@ class CartManager extends ChangeNotifier {
   }
 
   void _onItemUpdated() {
-    productPrice = 0.0;
+    productsPrice = 0.0;
     for (int i = 0; i < items.length; i++) {
       final cartProduct = items[i];
       if (cartProduct.quantity == 0) {
@@ -62,9 +62,10 @@ class CartManager extends ChangeNotifier {
         i--;
         continue;
       }
-      productPrice += cartProduct.totalPrice;
+      productsPrice += cartProduct.totalPrice;
       _updateCartProduct(cartProduct);
     }
+    notifyListeners();
   }
 
   void _updateCartProduct(CartProduct cartProduct) {
